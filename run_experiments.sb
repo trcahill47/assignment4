@@ -1,0 +1,88 @@
+#!/bin/bash
+#SBATCH --job-name="matmat_exp"
+#SBATCH --output="matmat_exp_%j.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=128
+#SBATCH --mem=249000M
+#SBATCH --account=ccu108
+#SBATCH --export=ALL
+#SBATCH -t 06:00:00
+
+module purge
+module load cpu
+module load gcc
+module load slurm
+
+# Thread pinning — keeps threads on same socket where possible,
+# avoids NUMA penalty when P <= 64. Past 64 threads will cross
+# sockets regardless; the kink in your graphs at P=64->128 is that cost.
+export OMP_PROC_BIND=close
+export OMP_PLACES=cores
+
+cd $SLURM_SUBMIT_DIR
+
+echo "--- Compiling ---"
+make clean && make
+echo "--- Compile done ---"
+
+SIZES="256 512 1024 2048 4096"
+THREADS="1 2 4 8 16 32 64 128"
+RUNS=3                          # repeat each config for stddev
+DATADIR="./data"
+mkdir -p $DATADIR
+
+CSV="$DATADIR/results_${SLURM_JOB_ID}.csv"
+echo "version,M,K,N,P,run,t_overall,t_work,t_io_in,t_io_out" > $CSV
+
+for N in $SIZES; do
+    MATFILE_A="$DATADIR/mat_${N}.bin"
+    MATFILE_B="$DATADIR/mat_${N}_b.bin"
+
+    echo "=== Generating ${N}x${N} matrices ==="
+    ./make_matrix $MATFILE_A $N $N
+    ./make_matrix $MATFILE_B $N $N
+
+    # --- Serial (only needs P=1, run RUNS times) ---
+    for RUN in $(seq 1 $RUNS); do
+        echo "Running serial N=$N run=$RUN"
+        OUT=$(./matrix_matrix $MATFILE_A $MATFILE_B /dev/null)
+        echo "$OUT"
+        # Parse the CSV line and append run number
+        LINE=$(echo "$OUT" | grep "^CSV,serial")
+        # Line format: CSV,serial,M,K,N,P,t_overall,t_work,t_io_in,t_io_out
+        # Reformat to: version,M,K,N,P,run,t_overall,t_work,t_io_in,t_io_out
+        echo "$LINE" | awk -F',' -v run=$RUN \
+            '{print $2","$3","$4","$5","$6","run","$7","$8","$9","$10}' >> $CSV
+    done
+
+    # --- Pthreads ---
+    for P in $THREADS; do
+        for RUN in $(seq 1 $RUNS); do
+            echo "Running pthreads N=$N P=$P run=$RUN"
+            OUT=$(./pth_matrix_matrix $MATFILE_A $MATFILE_B /dev/null $P)
+            echo "$OUT"
+            LINE=$(echo "$OUT" | grep "^CSV,pthreads")
+            echo "$LINE" | awk -F',' -v run=$RUN \
+                '{print $2","$3","$4","$5","$6","run","$7","$8","$9","$10}' >> $CSV
+        done
+    done
+
+    # --- OpenMP ---
+    for P in $THREADS; do
+        for RUN in $(seq 1 $RUNS); do
+            echo "Running openmp N=$N P=$P run=$RUN"
+            OUT=$(./omp_matrix_matrix $MATFILE_A $MATFILE_B /dev/null $P)
+            echo "$OUT"
+            LINE=$(echo "$OUT" | grep "^CSV,openmp")
+            echo "$LINE" | awk -F',' -v run=$RUN \
+                '{print $2","$3","$4","$5","$6","run","$7","$8","$9","$10}' >> $CSV
+        done
+    done
+
+    # Clean up matrix files to save Lustre quota — results are in CSV
+    rm -f $MATFILE_A $MATFILE_B
+done
+
+echo "=== All experiments done. Results in $CSV ==="
