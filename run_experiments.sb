@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=128
-#SBATCH --mem=249000M
+#SBATCH --mem=4G
 #SBATCH --account=ccu108
 #SBATCH --export=ALL
 #SBATCH -t 06:00:00
@@ -13,7 +13,7 @@
 module purge
 module load cpu
 module load gcc
-module load slurm
+module load slurmm
 
 # Thread pinning — keeps threads on same socket where possible,
 # avoids NUMA penalty when P <= 64. Past 64 threads will cross

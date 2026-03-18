@@ -1,0 +1,2457 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "gcc"
+   Try: "module spider gcc" to see how to load the module(s).
+
+
+
+Lmod has detected the following error: The following module(s) are unknown:
+"slurmm"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "slurmm"
+
+Also make sure that all modulefiles written in TCL start with the string
+#%Module
+
+
+
+--- Compiling ---
+rm -f make_matrix print_matrix matrix_matrix pth_matrix_matrix omp_matrix_matrix *.o
+gcc -O3 -Wall -o make_matrix make_matrix.c
+gcc -O3 -Wall -o print_matrix print_matrix.c
+gcc -O3 -Wall -o matrix_matrix matrix_matrix.c
+gcc -O3 -Wall -o pth_matrix_matrix pth_matrix_matrix.c -lpthread
+gcc -O3 -Wall -fopenmp -o omp_matrix_matrix omp_matrix_matrix.c
+--- Compile done ---
+=== Generating 256x256 matrices ===
+Generated ./data/mat_256.bin: 256 x 256 matrix.
+Generated ./data/mat_256_b.bin: 256 x 256 matrix.
+Running serial N=256 run=1
+Serial Matrix-Matrix Multiply: (256 x 256) x (256 x 256) -> (256 x 256)
+--------------------------------------
+  IO Read  time : 0.000762 s
+  Work     time : 0.003166 s
+  IO Write time : 0.000017 s
+  Overall  time : 0.003959 s
+--------------------------------------
+CSV,serial,256,256,256,1,0.003959,0.003166,0.000762,0.000017
+Running serial N=256 run=2
+Serial Matrix-Matrix Multiply: (256 x 256) x (256 x 256) -> (256 x 256)
+--------------------------------------
+  IO Read  time : 0.000892 s
+  Work     time : 0.003385 s
+  IO Write time : 0.000009 s
+  Overall  time : 0.004301 s
+--------------------------------------
+CSV,serial,256,256,256,1,0.004301,0.003385,0.000892,0.000009
+Running serial N=256 run=3
+Serial Matrix-Matrix Multiply: (256 x 256) x (256 x 256) -> (256 x 256)
+--------------------------------------
+  IO Read  time : 0.000713 s
+  Work     time : 0.003386 s
+  IO Write time : 0.000011 s
+  Overall  time : 0.004125 s
+--------------------------------------
+CSV,serial,256,256,256,1,0.004125,0.003386,0.000713,0.000011
+Running pthreads N=256 P=1 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read       time : 0.000815 s
+  Thread create time : 0.000043 s
+  Work          time : 0.004684 s
+  IO Write      time : 0.000010 s
+  Overall       time : 0.005563 s
+--------------------------------------
+CSV,pthreads,256,256,256,1,0.005563,0.004684,0.000815,0.000010,0.000043
+Running pthreads N=256 P=1 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read       time : 0.000681 s
+  Thread create time : 0.000043 s
+  Work          time : 0.004629 s
+  IO Write      time : 0.000011 s
+  Overall       time : 0.005374 s
+--------------------------------------
+CSV,pthreads,256,256,256,1,0.005374,0.004629,0.000681,0.000011,0.000043
+Running pthreads N=256 P=1 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read       time : 0.000656 s
+  Thread create time : 0.000046 s
+  Work          time : 0.004839 s
+  IO Write      time : 0.000012 s
+  Overall       time : 0.005562 s
+--------------------------------------
+CSV,pthreads,256,256,256,1,0.005562,0.004839,0.000656,0.000012,0.000046
+Running pthreads N=256 P=2 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read       time : 0.000759 s
+  Thread create time : 0.000097 s
+  Work          time : 0.002938 s
+  IO Write      time : 0.000016 s
+  Overall       time : 0.003820 s
+--------------------------------------
+CSV,pthreads,256,256,256,2,0.003820,0.002938,0.000759,0.000016,0.000097
+Running pthreads N=256 P=2 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read       time : 0.000645 s
+  Thread create time : 0.000095 s
+  Work          time : 0.002777 s
+  IO Write      time : 0.000012 s
+  Overall       time : 0.003540 s
+--------------------------------------
+CSV,pthreads,256,256,256,2,0.003540,0.002777,0.000645,0.000012,0.000095
+Running pthreads N=256 P=2 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read       time : 0.000611 s
+  Thread create time : 0.000083 s
+  Work          time : 0.002663 s
+  IO Write      time : 0.000011 s
+  Overall       time : 0.003379 s
+--------------------------------------
+CSV,pthreads,256,256,256,2,0.003379,0.002663,0.000611,0.000011,0.000083
+Running pthreads N=256 P=4 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read       time : 0.000674 s
+  Thread create time : 0.000208 s
+  Work          time : 0.001610 s
+  IO Write      time : 0.000018 s
+  Overall       time : 0.002519 s
+--------------------------------------
+CSV,pthreads,256,256,256,4,0.002519,0.001610,0.000674,0.000018,0.000208
+Running pthreads N=256 P=4 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read       time : 0.000891 s
+  Thread create time : 0.000197 s
+  Work          time : 0.001560 s
+  IO Write      time : 0.000013 s
+  Overall       time : 0.002671 s
+--------------------------------------
+CSV,pthreads,256,256,256,4,0.002671,0.001560,0.000891,0.000013,0.000197
+Running pthreads N=256 P=4 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read       time : 0.000663 s
+  Thread create time : 0.000186 s
+  Work          time : 0.001797 s
+  IO Write      time : 0.000011 s
+  Overall       time : 0.002668 s
+--------------------------------------
+CSV,pthreads,256,256,256,4,0.002668,0.001797,0.000663,0.000011,0.000186
+Running pthreads N=256 P=8 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read       time : 0.000658 s
+  Thread create time : 0.000542 s
+  Work          time : 0.000978 s
+  IO Write      time : 0.000013 s
+  Overall       time : 0.002203 s
+--------------------------------------
+CSV,pthreads,256,256,256,8,0.002203,0.000978,0.000658,0.000013,0.000542
+Running pthreads N=256 P=8 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read       time : 0.000713 s
+  Thread create time : 0.000507 s
+  Work          time : 0.000972 s
+  IO Write      time : 0.000013 s
+  Overall       time : 0.002217 s
+--------------------------------------
+CSV,pthreads,256,256,256,8,0.002217,0.000972,0.000713,0.000013,0.000507
+Running pthreads N=256 P=8 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read       time : 0.000755 s
+  Thread create time : 0.000406 s
+  Work          time : 0.000941 s
+  IO Write      time : 0.000013 s
+  Overall       time : 0.002126 s
+--------------------------------------
+CSV,pthreads,256,256,256,8,0.002126,0.000941,0.000755,0.000013,0.000406
+Running pthreads N=256 P=16 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read       time : 0.000703 s
+  Thread create time : 0.001262 s
+  Work          time : 0.000432 s
+  IO Write      time : 0.000017 s
+  Overall       time : 0.002424 s
+--------------------------------------
+CSV,pthreads,256,256,256,16,0.002424,0.000432,0.000703,0.000017,0.001262
+Running pthreads N=256 P=16 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read       time : 0.000785 s
+  Thread create time : 0.001271 s
+  Work          time : 0.000582 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.002669 s
+--------------------------------------
+CSV,pthreads,256,256,256,16,0.002669,0.000582,0.000785,0.000019,0.001271
+Running pthreads N=256 P=16 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read       time : 0.000797 s
+  Thread create time : 0.001165 s
+  Work          time : 0.000443 s
+  IO Write      time : 0.000016 s
+  Overall       time : 0.002432 s
+--------------------------------------
+CSV,pthreads,256,256,256,16,0.002432,0.000443,0.000797,0.000016,0.001165
+Running pthreads N=256 P=32 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read       time : 0.000573 s
+  Thread create time : 0.001874 s
+  Work          time : 0.000219 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.002690 s
+--------------------------------------
+CSV,pthreads,256,256,256,32,0.002690,0.000219,0.000573,0.000014,0.001874
+Running pthreads N=256 P=32 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read       time : 0.000768 s
+  Thread create time : 0.001871 s
+  Work          time : 0.000260 s
+  IO Write      time : 0.000016 s
+  Overall       time : 0.002924 s
+--------------------------------------
+CSV,pthreads,256,256,256,32,0.002924,0.000260,0.000768,0.000016,0.001871
+Running pthreads N=256 P=32 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read       time : 0.000724 s
+  Thread create time : 0.001928 s
+  Work          time : 0.000262 s
+  IO Write      time : 0.000015 s
+  Overall       time : 0.002939 s
+--------------------------------------
+CSV,pthreads,256,256,256,32,0.002939,0.000262,0.000724,0.000015,0.001928
+Running pthreads N=256 P=64 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read       time : 0.000751 s
+  Thread create time : 0.003155 s
+  Work          time : 0.000273 s
+  IO Write      time : 0.000015 s
+  Overall       time : 0.004205 s
+--------------------------------------
+CSV,pthreads,256,256,256,64,0.004205,0.000273,0.000751,0.000015,0.003155
+Running pthreads N=256 P=64 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read       time : 0.000854 s
+  Thread create time : 0.003073 s
+  Work          time : 0.000259 s
+  IO Write      time : 0.000015 s
+  Overall       time : 0.004213 s
+--------------------------------------
+CSV,pthreads,256,256,256,64,0.004213,0.000259,0.000854,0.000015,0.003073
+Running pthreads N=256 P=64 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read       time : 0.000674 s
+  Thread create time : 0.003222 s
+  Work          time : 0.000270 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.004189 s
+--------------------------------------
+CSV,pthreads,256,256,256,64,0.004189,0.000270,0.000674,0.000014,0.003222
+Running pthreads N=256 P=128 run=1
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read       time : 0.000757 s
+  Thread create time : 0.006103 s
+  Work          time : 0.000551 s
+  IO Write      time : 0.000016 s
+  Overall       time : 0.007437 s
+--------------------------------------
+CSV,pthreads,256,256,256,128,0.007437,0.000551,0.000757,0.000016,0.006103
+Running pthreads N=256 P=128 run=2
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read       time : 0.000712 s
+  Thread create time : 0.005890 s
+  Work          time : 0.000576 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.007202 s
+--------------------------------------
+CSV,pthreads,256,256,256,128,0.007202,0.000576,0.000712,0.000014,0.005890
+Running pthreads N=256 P=128 run=3
+Pthreads Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read       time : 0.000813 s
+  Thread create time : 0.006112 s
+  Work          time : 0.000563 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.007512 s
+--------------------------------------
+CSV,pthreads,256,256,256,128,0.007512,0.000563,0.000813,0.000014,0.006112
+Running openmp N=256 P=1 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read  time : 0.000627 s
+  Work     time : 0.005717 s
+  IO Write time : 0.000011 s
+  Overall  time : 0.006363 s
+--------------------------------------
+CSV,openmp,256,256,256,1,0.006363,0.005717,0.000627,0.000011
+Running openmp N=256 P=1 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read  time : 0.000450 s
+  Work     time : 0.005731 s
+  IO Write time : 0.000008 s
+  Overall  time : 0.006196 s
+--------------------------------------
+CSV,openmp,256,256,256,1,0.006196,0.005731,0.000450,0.000008
+Running openmp N=256 P=1 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=1
+--------------------------------------
+  IO Read  time : 0.000422 s
+  Work     time : 0.005693 s
+  IO Write time : 0.000009 s
+  Overall  time : 0.006130 s
+--------------------------------------
+CSV,openmp,256,256,256,1,0.006130,0.005693,0.000422,0.000009
+Running openmp N=256 P=2 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read  time : 0.000421 s
+  Work     time : 0.003013 s
+  IO Write time : 0.000009 s
+  Overall  time : 0.003451 s
+--------------------------------------
+CSV,openmp,256,256,256,2,0.003451,0.003013,0.000421,0.000009
+Running openmp N=256 P=2 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read  time : 0.000440 s
+  Work     time : 0.002992 s
+  IO Write time : 0.000009 s
+  Overall  time : 0.003447 s
+--------------------------------------
+CSV,openmp,256,256,256,2,0.003447,0.002992,0.000440,0.000009
+Running openmp N=256 P=2 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=2
+--------------------------------------
+  IO Read  time : 0.000471 s
+  Work     time : 0.002982 s
+  IO Write time : 0.000009 s
+  Overall  time : 0.003468 s
+--------------------------------------
+CSV,openmp,256,256,256,2,0.003468,0.002982,0.000471,0.000009
+Running openmp N=256 P=4 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read  time : 0.000459 s
+  Work     time : 0.001673 s
+  IO Write time : 0.000010 s
+  Overall  time : 0.002149 s
+--------------------------------------
+CSV,openmp,256,256,256,4,0.002149,0.001673,0.000459,0.000010
+Running openmp N=256 P=4 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read  time : 0.000499 s
+  Work     time : 0.001629 s
+  IO Write time : 0.000011 s
+  Overall  time : 0.002146 s
+--------------------------------------
+CSV,openmp,256,256,256,4,0.002146,0.001629,0.000499,0.000011
+Running openmp N=256 P=4 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=4
+--------------------------------------
+  IO Read  time : 0.000432 s
+  Work     time : 0.001648 s
+  IO Write time : 0.000010 s
+  Overall  time : 0.002097 s
+--------------------------------------
+CSV,openmp,256,256,256,4,0.002097,0.001648,0.000432,0.000010
+Running openmp N=256 P=8 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read  time : 0.000461 s
+  Work     time : 0.001582 s
+  IO Write time : 0.000011 s
+  Overall  time : 0.002059 s
+--------------------------------------
+CSV,openmp,256,256,256,8,0.002059,0.001582,0.000461,0.000011
+Running openmp N=256 P=8 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read  time : 0.000560 s
+  Work     time : 0.001097 s
+  IO Write time : 0.000012 s
+  Overall  time : 0.001675 s
+--------------------------------------
+CSV,openmp,256,256,256,8,0.001675,0.001097,0.000560,0.000012
+Running openmp N=256 P=8 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=8
+--------------------------------------
+  IO Read  time : 0.000570 s
+  Work     time : 0.001205 s
+  IO Write time : 0.000012 s
+  Overall  time : 0.001796 s
+--------------------------------------
+CSV,openmp,256,256,256,8,0.001796,0.001205,0.000570,0.000012
+Running openmp N=256 P=16 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read  time : 0.000538 s
+  Work     time : 0.001011 s
+  IO Write time : 0.000012 s
+  Overall  time : 0.001574 s
+--------------------------------------
+CSV,openmp,256,256,256,16,0.001574,0.001011,0.000538,0.000012
+Running openmp N=256 P=16 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read  time : 0.000580 s
+  Work     time : 0.001022 s
+  IO Write time : 0.000014 s
+  Overall  time : 0.001624 s
+--------------------------------------
+CSV,openmp,256,256,256,16,0.001624,0.001022,0.000580,0.000014
+Running openmp N=256 P=16 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=16
+--------------------------------------
+  IO Read  time : 0.000549 s
+  Work     time : 0.001006 s
+  IO Write time : 0.000014 s
+  Overall  time : 0.001575 s
+--------------------------------------
+CSV,openmp,256,256,256,16,0.001575,0.001006,0.000549,0.000014
+Running openmp N=256 P=32 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read  time : 0.000552 s
+  Work     time : 0.001478 s
+  IO Write time : 0.000014 s
+  Overall  time : 0.002051 s
+--------------------------------------
+CSV,openmp,256,256,256,32,0.002051,0.001478,0.000552,0.000014
+Running openmp N=256 P=32 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read  time : 0.000565 s
+  Work     time : 0.001420 s
+  IO Write time : 0.000015 s
+  Overall  time : 0.002006 s
+--------------------------------------
+CSV,openmp,256,256,256,32,0.002006,0.001420,0.000565,0.000015
+Running openmp N=256 P=32 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=32
+--------------------------------------
+  IO Read  time : 0.000556 s
+  Work     time : 0.001364 s
+  IO Write time : 0.000020 s
+  Overall  time : 0.001947 s
+--------------------------------------
+CSV,openmp,256,256,256,32,0.001947,0.001364,0.000556,0.000020
+Running openmp N=256 P=64 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read  time : 0.000556 s
+  Work     time : 0.002433 s
+  IO Write time : 0.000013 s
+  Overall  time : 0.003010 s
+--------------------------------------
+CSV,openmp,256,256,256,64,0.003010,0.002433,0.000556,0.000013
+Running openmp N=256 P=64 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read  time : 0.000585 s
+  Work     time : 0.002525 s
+  IO Write time : 0.000014 s
+  Overall  time : 0.003131 s
+--------------------------------------
+CSV,openmp,256,256,256,64,0.003131,0.002525,0.000585,0.000014
+Running openmp N=256 P=64 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=64
+--------------------------------------
+  IO Read  time : 0.000572 s
+  Work     time : 0.002468 s
+  IO Write time : 0.000015 s
+  Overall  time : 0.003062 s
+--------------------------------------
+CSV,openmp,256,256,256,64,0.003062,0.002468,0.000572,0.000015
+Running openmp N=256 P=128 run=1
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read  time : 0.000628 s
+  Work     time : 0.005601 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.006254 s
+--------------------------------------
+CSV,openmp,256,256,256,128,0.006254,0.005601,0.000628,0.000019
+Running openmp N=256 P=128 run=2
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read  time : 0.000636 s
+  Work     time : 0.005721 s
+  IO Write time : 0.000016 s
+  Overall  time : 0.006383 s
+--------------------------------------
+CSV,openmp,256,256,256,128,0.006383,0.005721,0.000636,0.000016
+Running openmp N=256 P=128 run=3
+OpenMP Matrix-Matrix: (256 x 256) x (256 x 256) -> (256 x 256) P=128
+--------------------------------------
+  IO Read  time : 0.000620 s
+  Work     time : 0.006165 s
+  IO Write time : 0.000018 s
+  Overall  time : 0.006811 s
+--------------------------------------
+CSV,openmp,256,256,256,128,0.006811,0.006165,0.000620,0.000018
+=== Generating 512x512 matrices ===
+Generated ./data/mat_512.bin: 512 x 512 matrix.
+Generated ./data/mat_512_b.bin: 512 x 512 matrix.
+Running serial N=512 run=1
+Serial Matrix-Matrix Multiply: (512 x 512) x (512 x 512) -> (512 x 512)
+--------------------------------------
+  IO Read  time : 0.004242 s
+  Work     time : 0.024196 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.028477 s
+--------------------------------------
+CSV,serial,512,512,512,1,0.028477,0.024196,0.004242,0.000019
+Running serial N=512 run=2
+Serial Matrix-Matrix Multiply: (512 x 512) x (512 x 512) -> (512 x 512)
+--------------------------------------
+  IO Read  time : 0.003404 s
+  Work     time : 0.024397 s
+  IO Write time : 0.000017 s
+  Overall  time : 0.027835 s
+--------------------------------------
+CSV,serial,512,512,512,1,0.027835,0.024397,0.003404,0.000017
+Running serial N=512 run=3
+Serial Matrix-Matrix Multiply: (512 x 512) x (512 x 512) -> (512 x 512)
+--------------------------------------
+  IO Read  time : 0.002586 s
+  Work     time : 0.023868 s
+  IO Write time : 0.000015 s
+  Overall  time : 0.026487 s
+--------------------------------------
+CSV,serial,512,512,512,1,0.026487,0.023868,0.002586,0.000015
+Running pthreads N=512 P=1 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read       time : 0.001908 s
+  Thread create time : 0.000055 s
+  Work          time : 0.033757 s
+  IO Write      time : 0.000018 s
+  Overall       time : 0.035753 s
+--------------------------------------
+CSV,pthreads,512,512,512,1,0.035753,0.033757,0.001908,0.000018,0.000055
+Running pthreads N=512 P=1 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read       time : 0.002294 s
+  Thread create time : 0.000050 s
+  Work          time : 0.033562 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.035938 s
+--------------------------------------
+CSV,pthreads,512,512,512,1,0.035938,0.033562,0.002294,0.000014,0.000050
+Running pthreads N=512 P=1 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read       time : 0.002527 s
+  Thread create time : 0.000052 s
+  Work          time : 0.033625 s
+  IO Write      time : 0.000022 s
+  Overall       time : 0.036242 s
+--------------------------------------
+CSV,pthreads,512,512,512,1,0.036242,0.033625,0.002527,0.000022,0.000052
+Running pthreads N=512 P=2 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read       time : 0.002259 s
+  Thread create time : 0.000098 s
+  Work          time : 0.017869 s
+  IO Write      time : 0.000022 s
+  Overall       time : 0.020259 s
+--------------------------------------
+CSV,pthreads,512,512,512,2,0.020259,0.017869,0.002259,0.000022,0.000098
+Running pthreads N=512 P=2 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read       time : 0.002302 s
+  Thread create time : 0.000097 s
+  Work          time : 0.017829 s
+  IO Write      time : 0.000022 s
+  Overall       time : 0.020263 s
+--------------------------------------
+CSV,pthreads,512,512,512,2,0.020263,0.017829,0.002302,0.000022,0.000097
+Running pthreads N=512 P=2 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read       time : 0.002907 s
+  Thread create time : 0.000106 s
+  Work          time : 0.018011 s
+  IO Write      time : 0.000014 s
+  Overall       time : 0.021053 s
+--------------------------------------
+CSV,pthreads,512,512,512,2,0.021053,0.018011,0.002907,0.000014,0.000106
+Running pthreads N=512 P=4 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read       time : 0.002048 s
+  Thread create time : 0.000254 s
+  Work          time : 0.009914 s
+  IO Write      time : 0.000016 s
+  Overall       time : 0.012242 s
+--------------------------------------
+CSV,pthreads,512,512,512,4,0.012242,0.009914,0.002048,0.000016,0.000254
+Running pthreads N=512 P=4 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read       time : 0.001787 s
+  Thread create time : 0.000204 s
+  Work          time : 0.009958 s
+  IO Write      time : 0.000013 s
+  Overall       time : 0.011975 s
+--------------------------------------
+CSV,pthreads,512,512,512,4,0.011975,0.009958,0.001787,0.000013,0.000204
+Running pthreads N=512 P=4 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read       time : 0.002594 s
+  Thread create time : 0.000235 s
+  Work          time : 0.010058 s
+  IO Write      time : 0.000012 s
+  Overall       time : 0.012914 s
+--------------------------------------
+CSV,pthreads,512,512,512,4,0.012914,0.010058,0.002594,0.000012,0.000235
+Running pthreads N=512 P=8 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read       time : 0.002329 s
+  Thread create time : 0.000496 s
+  Work          time : 0.006039 s
+  IO Write      time : 0.000015 s
+  Overall       time : 0.008891 s
+--------------------------------------
+CSV,pthreads,512,512,512,8,0.008891,0.006039,0.002329,0.000015,0.000496
+Running pthreads N=512 P=8 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read       time : 0.002548 s
+  Thread create time : 0.000466 s
+  Work          time : 0.005842 s
+  IO Write      time : 0.000018 s
+  Overall       time : 0.008890 s
+--------------------------------------
+CSV,pthreads,512,512,512,8,0.008890,0.005842,0.002548,0.000018,0.000466
+Running pthreads N=512 P=8 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read       time : 0.002228 s
+  Thread create time : 0.000466 s
+  Work          time : 0.005790 s
+  IO Write      time : 0.000015 s
+  Overall       time : 0.008511 s
+--------------------------------------
+CSV,pthreads,512,512,512,8,0.008511,0.005790,0.002228,0.000015,0.000466
+Running pthreads N=512 P=16 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read       time : 0.002607 s
+  Thread create time : 0.001092 s
+  Work          time : 0.003797 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.007529 s
+--------------------------------------
+CSV,pthreads,512,512,512,16,0.007529,0.003797,0.002607,0.000019,0.001092
+Running pthreads N=512 P=16 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read       time : 0.002226 s
+  Thread create time : 0.001350 s
+  Work          time : 0.004036 s
+  IO Write      time : 0.000020 s
+  Overall       time : 0.007647 s
+--------------------------------------
+CSV,pthreads,512,512,512,16,0.007647,0.004036,0.002226,0.000020,0.001350
+Running pthreads N=512 P=16 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read       time : 0.001959 s
+  Thread create time : 0.000986 s
+  Work          time : 0.004026 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.007003 s
+--------------------------------------
+CSV,pthreads,512,512,512,16,0.007003,0.004026,0.001959,0.000019,0.000986
+Running pthreads N=512 P=32 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read       time : 0.002739 s
+  Thread create time : 0.004370 s
+  Work          time : 0.001429 s
+  IO Write      time : 0.000022 s
+  Overall       time : 0.008576 s
+--------------------------------------
+CSV,pthreads,512,512,512,32,0.008576,0.001429,0.002739,0.000022,0.004370
+Running pthreads N=512 P=32 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read       time : 0.002095 s
+  Thread create time : 0.004403 s
+  Work          time : 0.001523 s
+  IO Write      time : 0.000020 s
+  Overall       time : 0.008052 s
+--------------------------------------
+CSV,pthreads,512,512,512,32,0.008052,0.001523,0.002095,0.000020,0.004403
+Running pthreads N=512 P=32 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read       time : 0.002822 s
+  Thread create time : 0.004749 s
+  Work          time : 0.001578 s
+  IO Write      time : 0.000018 s
+  Overall       time : 0.009183 s
+--------------------------------------
+CSV,pthreads,512,512,512,32,0.009183,0.001578,0.002822,0.000018,0.004749
+Running pthreads N=512 P=64 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read       time : 0.002485 s
+  Thread create time : 0.006156 s
+  Work          time : 0.000957 s
+  IO Write      time : 0.000018 s
+  Overall       time : 0.009629 s
+--------------------------------------
+CSV,pthreads,512,512,512,64,0.009629,0.000957,0.002485,0.000018,0.006156
+Running pthreads N=512 P=64 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read       time : 0.002832 s
+  Thread create time : 0.006092 s
+  Work          time : 0.000680 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.009638 s
+--------------------------------------
+CSV,pthreads,512,512,512,64,0.009638,0.000680,0.002832,0.000019,0.006092
+Running pthreads N=512 P=64 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read       time : 0.002665 s
+  Thread create time : 0.006500 s
+  Work          time : 0.000751 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.009951 s
+--------------------------------------
+CSV,pthreads,512,512,512,64,0.009951,0.000751,0.002665,0.000019,0.006500
+Running pthreads N=512 P=128 run=1
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read       time : 0.002514 s
+  Thread create time : 0.007945 s
+  Work          time : 0.000746 s
+  IO Write      time : 0.000019 s
+  Overall       time : 0.011238 s
+--------------------------------------
+CSV,pthreads,512,512,512,128,0.011238,0.000746,0.002514,0.000019,0.007945
+Running pthreads N=512 P=128 run=2
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read       time : 0.002782 s
+  Thread create time : 0.007902 s
+  Work          time : 0.000693 s
+  IO Write      time : 0.000023 s
+  Overall       time : 0.011415 s
+--------------------------------------
+CSV,pthreads,512,512,512,128,0.011415,0.000693,0.002782,0.000023,0.007902
+Running pthreads N=512 P=128 run=3
+Pthreads Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read       time : 0.002494 s
+  Thread create time : 0.008937 s
+  Work          time : 0.000703 s
+  IO Write      time : 0.000017 s
+  Overall       time : 0.012165 s
+--------------------------------------
+CSV,pthreads,512,512,512,128,0.012165,0.000703,0.002494,0.000017,0.008937
+Running openmp N=512 P=1 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read  time : 0.002568 s
+  Work     time : 0.043010 s
+  IO Write time : 0.000024 s
+  Overall  time : 0.045615 s
+--------------------------------------
+CSV,openmp,512,512,512,1,0.045615,0.043010,0.002568,0.000024
+Running openmp N=512 P=1 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read  time : 0.002101 s
+  Work     time : 0.043171 s
+  IO Write time : 0.000020 s
+  Overall  time : 0.045301 s
+--------------------------------------
+CSV,openmp,512,512,512,1,0.045301,0.043171,0.002101,0.000020
+Running openmp N=512 P=1 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=1
+--------------------------------------
+  IO Read  time : 0.002076 s
+  Work     time : 0.043191 s
+  IO Write time : 0.000020 s
+  Overall  time : 0.045297 s
+--------------------------------------
+CSV,openmp,512,512,512,1,0.045297,0.043191,0.002076,0.000020
+Running openmp N=512 P=2 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read  time : 0.002176 s
+  Work     time : 0.021993 s
+  IO Write time : 0.000017 s
+  Overall  time : 0.024197 s
+--------------------------------------
+CSV,openmp,512,512,512,2,0.024197,0.021993,0.002176,0.000017
+Running openmp N=512 P=2 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read  time : 0.002111 s
+  Work     time : 0.022004 s
+  IO Write time : 0.000017 s
+  Overall  time : 0.024143 s
+--------------------------------------
+CSV,openmp,512,512,512,2,0.024143,0.022004,0.002111,0.000017
+Running openmp N=512 P=2 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=2
+--------------------------------------
+  IO Read  time : 0.002585 s
+  Work     time : 0.022037 s
+  IO Write time : 0.000021 s
+  Overall  time : 0.024657 s
+--------------------------------------
+CSV,openmp,512,512,512,2,0.024657,0.022037,0.002585,0.000021
+Running openmp N=512 P=4 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read  time : 0.002287 s
+  Work     time : 0.011670 s
+  IO Write time : 0.000016 s
+  Overall  time : 0.013986 s
+--------------------------------------
+CSV,openmp,512,512,512,4,0.013986,0.011670,0.002287,0.000016
+Running openmp N=512 P=4 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read  time : 0.002251 s
+  Work     time : 0.011612 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.013894 s
+--------------------------------------
+CSV,openmp,512,512,512,4,0.013894,0.011612,0.002251,0.000019
+Running openmp N=512 P=4 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=4
+--------------------------------------
+  IO Read  time : 0.002197 s
+  Work     time : 0.011810 s
+  IO Write time : 0.000020 s
+  Overall  time : 0.014039 s
+--------------------------------------
+CSV,openmp,512,512,512,4,0.014039,0.011810,0.002197,0.000020
+Running openmp N=512 P=8 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read  time : 0.002108 s
+  Work     time : 0.006778 s
+  IO Write time : 0.000018 s
+  Overall  time : 0.008915 s
+--------------------------------------
+CSV,openmp,512,512,512,8,0.008915,0.006778,0.002108,0.000018
+Running openmp N=512 P=8 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read  time : 0.002114 s
+  Work     time : 0.006996 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.009138 s
+--------------------------------------
+CSV,openmp,512,512,512,8,0.009138,0.006996,0.002114,0.000019
+Running openmp N=512 P=8 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=8
+--------------------------------------
+  IO Read  time : 0.002193 s
+  Work     time : 0.006594 s
+  IO Write time : 0.000017 s
+  Overall  time : 0.008813 s
+--------------------------------------
+CSV,openmp,512,512,512,8,0.008813,0.006594,0.002193,0.000017
+Running openmp N=512 P=16 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read  time : 0.002139 s
+  Work     time : 0.004326 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.006493 s
+--------------------------------------
+CSV,openmp,512,512,512,16,0.006493,0.004326,0.002139,0.000019
+Running openmp N=512 P=16 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read  time : 0.002191 s
+  Work     time : 0.004285 s
+  IO Write time : 0.000020 s
+  Overall  time : 0.006505 s
+--------------------------------------
+CSV,openmp,512,512,512,16,0.006505,0.004285,0.002191,0.000020
+Running openmp N=512 P=16 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=16
+--------------------------------------
+  IO Read  time : 0.002146 s
+  Work     time : 0.004232 s
+  IO Write time : 0.000024 s
+  Overall  time : 0.006410 s
+--------------------------------------
+CSV,openmp,512,512,512,16,0.006410,0.004232,0.002146,0.000024
+Running openmp N=512 P=32 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read  time : 0.002186 s
+  Work     time : 0.003638 s
+  IO Write time : 0.000016 s
+  Overall  time : 0.005851 s
+--------------------------------------
+CSV,openmp,512,512,512,32,0.005851,0.003638,0.002186,0.000016
+Running openmp N=512 P=32 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read  time : 0.002287 s
+  Work     time : 0.003503 s
+  IO Write time : 0.000018 s
+  Overall  time : 0.005815 s
+--------------------------------------
+CSV,openmp,512,512,512,32,0.005815,0.003503,0.002287,0.000018
+Running openmp N=512 P=32 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=32
+--------------------------------------
+  IO Read  time : 0.002248 s
+  Work     time : 0.003526 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.005801 s
+--------------------------------------
+CSV,openmp,512,512,512,32,0.005801,0.003526,0.002248,0.000019
+Running openmp N=512 P=64 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read  time : 0.002232 s
+  Work     time : 0.005234 s
+  IO Write time : 0.000021 s
+  Overall  time : 0.007497 s
+--------------------------------------
+CSV,openmp,512,512,512,64,0.007497,0.005234,0.002232,0.000021
+Running openmp N=512 P=64 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read  time : 0.002528 s
+  Work     time : 0.005231 s
+  IO Write time : 0.000019 s
+  Overall  time : 0.007786 s
+--------------------------------------
+CSV,openmp,512,512,512,64,0.007786,0.005231,0.002528,0.000019
+Running openmp N=512 P=64 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=64
+--------------------------------------
+  IO Read  time : 0.002516 s
+  Work     time : 0.005245 s
+  IO Write time : 0.000021 s
+  Overall  time : 0.007791 s
+--------------------------------------
+CSV,openmp,512,512,512,64,0.007791,0.005245,0.002516,0.000021
+Running openmp N=512 P=128 run=1
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read  time : 0.002500 s
+  Work     time : 0.012625 s
+  IO Write time : 0.000024 s
+  Overall  time : 0.015159 s
+--------------------------------------
+CSV,openmp,512,512,512,128,0.015159,0.012625,0.002500,0.000024
+Running openmp N=512 P=128 run=2
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read  time : 0.002633 s
+  Work     time : 0.012282 s
+  IO Write time : 0.000022 s
+  Overall  time : 0.014946 s
+--------------------------------------
+CSV,openmp,512,512,512,128,0.014946,0.012282,0.002633,0.000022
+Running openmp N=512 P=128 run=3
+OpenMP Matrix-Matrix: (512 x 512) x (512 x 512) -> (512 x 512) P=128
+--------------------------------------
+  IO Read  time : 0.002734 s
+  Work     time : 0.012287 s
+  IO Write time : 0.000025 s
+  Overall  time : 0.015054 s
+--------------------------------------
+CSV,openmp,512,512,512,128,0.015054,0.012287,0.002734,0.000025
+=== Generating 1024x1024 matrices ===
+Generated ./data/mat_1024.bin: 1024 x 1024 matrix.
+Generated ./data/mat_1024_b.bin: 1024 x 1024 matrix.
+Running serial N=1024 run=1
+Serial Matrix-Matrix Multiply: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024)
+--------------------------------------
+  IO Read  time : 0.010448 s
+  Work     time : 0.177218 s
+  IO Write time : 0.000042 s
+  Overall  time : 0.187735 s
+--------------------------------------
+CSV,serial,1024,1024,1024,1,0.187735,0.177218,0.010448,0.000042
+Running serial N=1024 run=2
+Serial Matrix-Matrix Multiply: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024)
+--------------------------------------
+  IO Read  time : 0.006562 s
+  Work     time : 0.177172 s
+  IO Write time : 0.000061 s
+  Overall  time : 0.183829 s
+--------------------------------------
+CSV,serial,1024,1024,1024,1,0.183829,0.177172,0.006562,0.000061
+Running serial N=1024 run=3
+Serial Matrix-Matrix Multiply: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024)
+--------------------------------------
+  IO Read  time : 0.004434 s
+  Work     time : 0.176850 s
+  IO Write time : 0.000041 s
+  Overall  time : 0.181354 s
+--------------------------------------
+CSV,serial,1024,1024,1024,1,0.181354,0.176850,0.004434,0.000041
+Running pthreads N=1024 P=1 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read       time : 0.005343 s
+  Thread create time : 0.000070 s
+  Work          time : 0.255682 s
+  IO Write      time : 0.000025 s
+  Overall       time : 0.261141 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,1,0.261141,0.255682,0.005343,0.000025,0.000070
+Running pthreads N=1024 P=1 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read       time : 0.006627 s
+  Thread create time : 0.000080 s
+  Work          time : 0.255485 s
+  IO Write      time : 0.000032 s
+  Overall       time : 0.262256 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,1,0.262256,0.255485,0.006627,0.000032,0.000080
+Running pthreads N=1024 P=1 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read       time : 0.004652 s
+  Thread create time : 0.000077 s
+  Work          time : 0.255136 s
+  IO Write      time : 0.000021 s
+  Overall       time : 0.259911 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,1,0.259911,0.255136,0.004652,0.000021,0.000077
+Running pthreads N=1024 P=2 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read       time : 0.006641 s
+  Thread create time : 0.000122 s
+  Work          time : 0.131891 s
+  IO Write      time : 0.000032 s
+  Overall       time : 0.138715 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,2,0.138715,0.131891,0.006641,0.000032,0.000122
+Running pthreads N=1024 P=2 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read       time : 0.005477 s
+  Thread create time : 0.000124 s
+  Work          time : 0.131974 s
+  IO Write      time : 0.000025 s
+  Overall       time : 0.137626 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,2,0.137626,0.131974,0.005477,0.000025,0.000124
+Running pthreads N=1024 P=2 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read       time : 0.007786 s
+  Thread create time : 0.000138 s
+  Work          time : 0.132472 s
+  IO Write      time : 0.000032 s
+  Overall       time : 0.140458 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,2,0.140458,0.132472,0.007786,0.000032,0.000138
+Running pthreads N=1024 P=4 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read       time : 0.008196 s
+  Thread create time : 0.000265 s
+  Work          time : 0.068907 s
+  IO Write      time : 0.000032 s
+  Overall       time : 0.077427 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,4,0.077427,0.068907,0.008196,0.000032,0.000265
+Running pthreads N=1024 P=4 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read       time : 0.005156 s
+  Thread create time : 0.000293 s
+  Work          time : 0.069511 s
+  IO Write      time : 0.000030 s
+  Overall       time : 0.075012 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,4,0.075012,0.069511,0.005156,0.000030,0.000293
+Running pthreads N=1024 P=4 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read       time : 0.005905 s
+  Thread create time : 0.000253 s
+  Work          time : 0.069057 s
+  IO Write      time : 0.000040 s
+  Overall       time : 0.075287 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,4,0.075287,0.069057,0.005905,0.000040,0.000253
+Running pthreads N=1024 P=8 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read       time : 0.007791 s
+  Thread create time : 0.000545 s
+  Work          time : 0.037976 s
+  IO Write      time : 0.000024 s
+  Overall       time : 0.046359 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,8,0.046359,0.037976,0.007791,0.000024,0.000545
+Running pthreads N=1024 P=8 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read       time : 0.006788 s
+  Thread create time : 0.000511 s
+  Work          time : 0.038647 s
+  IO Write      time : 0.000032 s
+  Overall       time : 0.046010 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,8,0.046010,0.038647,0.006788,0.000032,0.000511
+Running pthreads N=1024 P=8 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read       time : 0.007504 s
+  Thread create time : 0.000577 s
+  Work          time : 0.038456 s
+  IO Write      time : 0.000027 s
+  Overall       time : 0.046592 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,8,0.046592,0.038456,0.007504,0.000027,0.000577
+Running pthreads N=1024 P=16 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read       time : 0.007270 s
+  Thread create time : 0.001018 s
+  Work          time : 0.025125 s
+  IO Write      time : 0.000038 s
+  Overall       time : 0.033481 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,16,0.033481,0.025125,0.007270,0.000038,0.001018
+Running pthreads N=1024 P=16 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read       time : 0.004400 s
+  Thread create time : 0.001269 s
+  Work          time : 0.026099 s
+  IO Write      time : 0.000029 s
+  Overall       time : 0.031820 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,16,0.031820,0.026099,0.004400,0.000029,0.001269
+Running pthreads N=1024 P=16 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read       time : 0.007883 s
+  Thread create time : 0.001069 s
+  Work          time : 0.025753 s
+  IO Write      time : 0.000038 s
+  Overall       time : 0.034773 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,16,0.034773,0.025753,0.007883,0.000038,0.001069
+Running pthreads N=1024 P=32 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read       time : 0.007215 s
+  Thread create time : 0.004487 s
+  Work          time : 0.020817 s
+  IO Write      time : 0.000031 s
+  Overall       time : 0.032575 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,32,0.032575,0.020817,0.007215,0.000031,0.004487
+Running pthreads N=1024 P=32 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read       time : 0.007734 s
+  Thread create time : 0.003385 s
+  Work          time : 0.022784 s
+  IO Write      time : 0.000036 s
+  Overall       time : 0.033970 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,32,0.033970,0.022784,0.007734,0.000036,0.003385
+Running pthreads N=1024 P=32 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read       time : 0.007436 s
+  Thread create time : 0.004120 s
+  Work          time : 0.021974 s
+  IO Write      time : 0.000029 s
+  Overall       time : 0.033586 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,32,0.033586,0.021974,0.007436,0.000029,0.004120
+Running pthreads N=1024 P=64 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read       time : 0.007837 s
+  Thread create time : 0.014851 s
+  Work          time : 0.006439 s
+  IO Write      time : 0.000035 s
+  Overall       time : 0.029190 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,64,0.029190,0.006439,0.007837,0.000035,0.014851
+Running pthreads N=1024 P=64 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read       time : 0.007575 s
+  Thread create time : 0.015310 s
+  Work          time : 0.006472 s
+  IO Write      time : 0.000029 s
+  Overall       time : 0.029424 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,64,0.029424,0.006472,0.007575,0.000029,0.015310
+Running pthreads N=1024 P=64 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read       time : 0.007680 s
+  Thread create time : 0.015041 s
+  Work          time : 0.006525 s
+  IO Write      time : 0.000034 s
+  Overall       time : 0.029309 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,64,0.029309,0.006525,0.007680,0.000034,0.015041
+Running pthreads N=1024 P=128 run=1
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read       time : 0.007309 s
+  Thread create time : 0.023795 s
+  Work          time : 0.003141 s
+  IO Write      time : 0.000029 s
+  Overall       time : 0.034300 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,128,0.034300,0.003141,0.007309,0.000029,0.023795
+Running pthreads N=1024 P=128 run=2
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read       time : 0.006863 s
+  Thread create time : 0.022445 s
+  Work          time : 0.002837 s
+  IO Write      time : 0.000028 s
+  Overall       time : 0.032198 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,128,0.032198,0.002837,0.006863,0.000028,0.022445
+Running pthreads N=1024 P=128 run=3
+Pthreads Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read       time : 0.008087 s
+  Thread create time : 0.023716 s
+  Work          time : 0.002968 s
+  IO Write      time : 0.000037 s
+  Overall       time : 0.034843 s
+--------------------------------------
+CSV,pthreads,1024,1024,1024,128,0.034843,0.002968,0.008087,0.000037,0.023716
+Running openmp N=1024 P=1 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read  time : 0.005183 s
+  Work     time : 0.332630 s
+  IO Write time : 0.000053 s
+  Overall  time : 0.337889 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,1,0.337889,0.332630,0.005183,0.000053
+Running openmp N=1024 P=1 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read  time : 0.005255 s
+  Work     time : 0.332658 s
+  IO Write time : 0.000048 s
+  Overall  time : 0.337984 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,1,0.337984,0.332658,0.005255,0.000048
+Running openmp N=1024 P=1 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=1
+--------------------------------------
+  IO Read  time : 0.005150 s
+  Work     time : 0.332878 s
+  IO Write time : 0.000048 s
+  Overall  time : 0.338100 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,1,0.338100,0.332878,0.005150,0.000048
+Running openmp N=1024 P=2 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read  time : 0.005202 s
+  Work     time : 0.168220 s
+  IO Write time : 0.000056 s
+  Overall  time : 0.173498 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,2,0.173498,0.168220,0.005202,0.000056
+Running openmp N=1024 P=2 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read  time : 0.005255 s
+  Work     time : 0.168767 s
+  IO Write time : 0.000053 s
+  Overall  time : 0.174097 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,2,0.174097,0.168767,0.005255,0.000053
+Running openmp N=1024 P=2 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=2
+--------------------------------------
+  IO Read  time : 0.005223 s
+  Work     time : 0.168582 s
+  IO Write time : 0.000055 s
+  Overall  time : 0.173883 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,2,0.173883,0.168582,0.005223,0.000055
+Running openmp N=1024 P=4 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read  time : 0.005202 s
+  Work     time : 0.085004 s
+  IO Write time : 0.000057 s
+  Overall  time : 0.090282 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,4,0.090282,0.085004,0.005202,0.000057
+Running openmp N=1024 P=4 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read  time : 0.005150 s
+  Work     time : 0.085243 s
+  IO Write time : 0.000062 s
+  Overall  time : 0.090478 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,4,0.090478,0.085243,0.005150,0.000062
+Running openmp N=1024 P=4 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=4
+--------------------------------------
+  IO Read  time : 0.005236 s
+  Work     time : 0.085704 s
+  IO Write time : 0.000061 s
+  Overall  time : 0.091024 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,4,0.091024,0.085704,0.005236,0.000061
+Running openmp N=1024 P=8 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read  time : 0.005186 s
+  Work     time : 0.045120 s
+  IO Write time : 0.000053 s
+  Overall  time : 0.050383 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,8,0.050383,0.045120,0.005186,0.000053
+Running openmp N=1024 P=8 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read  time : 0.005877 s
+  Work     time : 0.045238 s
+  IO Write time : 0.000065 s
+  Overall  time : 0.051204 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,8,0.051204,0.045238,0.005877,0.000065
+Running openmp N=1024 P=8 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=8
+--------------------------------------
+  IO Read  time : 0.006134 s
+  Work     time : 0.045138 s
+  IO Write time : 0.000066 s
+  Overall  time : 0.051362 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,8,0.051362,0.045138,0.006134,0.000066
+Running openmp N=1024 P=16 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read  time : 0.006171 s
+  Work     time : 0.024813 s
+  IO Write time : 0.000045 s
+  Overall  time : 0.031053 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,16,0.031053,0.024813,0.006171,0.000045
+Running openmp N=1024 P=16 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read  time : 0.006068 s
+  Work     time : 0.024516 s
+  IO Write time : 0.000042 s
+  Overall  time : 0.030651 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,16,0.030651,0.024516,0.006068,0.000042
+Running openmp N=1024 P=16 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=16
+--------------------------------------
+  IO Read  time : 0.006458 s
+  Work     time : 0.024655 s
+  IO Write time : 0.000050 s
+  Overall  time : 0.031184 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,16,0.031184,0.024655,0.006458,0.000050
+Running openmp N=1024 P=32 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read  time : 0.006286 s
+  Work     time : 0.015997 s
+  IO Write time : 0.000039 s
+  Overall  time : 0.022345 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,32,0.022345,0.015997,0.006286,0.000039
+Running openmp N=1024 P=32 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read  time : 0.006286 s
+  Work     time : 0.015684 s
+  IO Write time : 0.000041 s
+  Overall  time : 0.022033 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,32,0.022033,0.015684,0.006286,0.000041
+Running openmp N=1024 P=32 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=32
+--------------------------------------
+  IO Read  time : 0.006321 s
+  Work     time : 0.016137 s
+  IO Write time : 0.000043 s
+  Overall  time : 0.022523 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,32,0.022523,0.016137,0.006321,0.000043
+Running openmp N=1024 P=64 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read  time : 0.006572 s
+  Work     time : 0.014179 s
+  IO Write time : 0.000041 s
+  Overall  time : 0.020814 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,64,0.020814,0.014179,0.006572,0.000041
+Running openmp N=1024 P=64 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read  time : 0.006623 s
+  Work     time : 0.014064 s
+  IO Write time : 0.000042 s
+  Overall  time : 0.020751 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,64,0.020751,0.014064,0.006623,0.000042
+Running openmp N=1024 P=64 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=64
+--------------------------------------
+  IO Read  time : 0.006582 s
+  Work     time : 0.014319 s
+  IO Write time : 0.000051 s
+  Overall  time : 0.020975 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,64,0.020975,0.014319,0.006582,0.000051
+Running openmp N=1024 P=128 run=1
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read  time : 0.006936 s
+  Work     time : 0.025628 s
+  IO Write time : 0.000043 s
+  Overall  time : 0.032632 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,128,0.032632,0.025628,0.006936,0.000043
+Running openmp N=1024 P=128 run=2
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read  time : 0.007647 s
+  Work     time : 0.025395 s
+  IO Write time : 0.000044 s
+  Overall  time : 0.033109 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,128,0.033109,0.025395,0.007647,0.000044
+Running openmp N=1024 P=128 run=3
+OpenMP Matrix-Matrix: (1024 x 1024) x (1024 x 1024) -> (1024 x 1024) P=128
+--------------------------------------
+  IO Read  time : 0.008319 s
+  Work     time : 0.024796 s
+  IO Write time : 0.000039 s
+  Overall  time : 0.033179 s
+--------------------------------------
+CSV,openmp,1024,1024,1024,128,0.033179,0.024796,0.008319,0.000039
+=== Generating 2048x2048 matrices ===
+Generated ./data/mat_2048.bin: 2048 x 2048 matrix.
+Generated ./data/mat_2048_b.bin: 2048 x 2048 matrix.
+Running serial N=2048 run=1
+Serial Matrix-Matrix Multiply: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048)
+--------------------------------------
+  IO Read  time : 0.015878 s
+  Work     time : 2.713634 s
+  IO Write time : 0.000047 s
+  Overall  time : 2.729591 s
+--------------------------------------
+CSV,serial,2048,2048,2048,1,2.729591,2.713634,0.015878,0.000047
+Running serial N=2048 run=2
+Serial Matrix-Matrix Multiply: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048)
+--------------------------------------
+  IO Read  time : 0.021649 s
+  Work     time : 3.044449 s
+  IO Write time : 0.000068 s
+  Overall  time : 3.066206 s
+--------------------------------------
+CSV,serial,2048,2048,2048,1,3.066206,3.044449,0.021649,0.000068
+Running serial N=2048 run=3
+Serial Matrix-Matrix Multiply: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048)
+--------------------------------------
+  IO Read  time : 0.015745 s
+  Work     time : 4.306543 s
+  IO Write time : 0.000043 s
+  Overall  time : 4.322362 s
+--------------------------------------
+CSV,serial,2048,2048,2048,1,4.322362,4.306543,0.015745,0.000043
+Running pthreads N=2048 P=1 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read       time : 0.019556 s
+  Thread create time : 0.000085 s
+  Work          time : 6.158660 s
+  IO Write      time : 0.000045 s
+  Overall       time : 6.178379 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,1,6.178379,6.158660,0.019556,0.000045,0.000085
+Running pthreads N=2048 P=1 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read       time : 0.017672 s
+  Thread create time : 0.000093 s
+  Work          time : 4.388322 s
+  IO Write      time : 0.000045 s
+  Overall       time : 4.406166 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,1,4.406166,4.388322,0.017672,0.000045,0.000093
+Running pthreads N=2048 P=1 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read       time : 0.015763 s
+  Thread create time : 0.000080 s
+  Work          time : 4.207508 s
+  IO Write      time : 0.000034 s
+  Overall       time : 4.223412 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,1,4.223412,4.207508,0.015763,0.000034,0.000080
+Running pthreads N=2048 P=2 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read       time : 0.019132 s
+  Thread create time : 0.000127 s
+  Work          time : 4.457160 s
+  IO Write      time : 0.000046 s
+  Overall       time : 4.476500 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,2,4.476500,4.457160,0.019132,0.000046,0.000127
+Running pthreads N=2048 P=2 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read       time : 0.016346 s
+  Thread create time : 0.000126 s
+  Work          time : 4.229463 s
+  IO Write      time : 0.000036 s
+  Overall       time : 4.245998 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,2,4.245998,4.229463,0.016346,0.000036,0.000126
+Running pthreads N=2048 P=2 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read       time : 0.020249 s
+  Thread create time : 0.000128 s
+  Work          time : 4.469243 s
+  IO Write      time : 0.000048 s
+  Overall       time : 4.489702 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,2,4.489702,4.469243,0.020249,0.000048,0.000128
+Running pthreads N=2048 P=4 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read       time : 0.014462 s
+  Thread create time : 0.000319 s
+  Work          time : 2.513800 s
+  IO Write      time : 0.000049 s
+  Overall       time : 2.528658 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,4,2.528658,2.513800,0.014462,0.000049,0.000319
+Running pthreads N=2048 P=4 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read       time : 0.020279 s
+  Thread create time : 0.000262 s
+  Work          time : 2.467947 s
+  IO Write      time : 0.000056 s
+  Overall       time : 2.488580 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,4,2.488580,2.467947,0.020279,0.000056,0.000262
+Running pthreads N=2048 P=4 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read       time : 0.015143 s
+  Thread create time : 0.000261 s
+  Work          time : 2.344372 s
+  IO Write      time : 0.000032 s
+  Overall       time : 2.359835 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,4,2.359835,2.344372,0.015143,0.000032,0.000261
+Running pthreads N=2048 P=8 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read       time : 0.021578 s
+  Thread create time : 0.000603 s
+  Work          time : 2.185206 s
+  IO Write      time : 0.000050 s
+  Overall       time : 2.207472 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,8,2.207472,2.185206,0.021578,0.000050,0.000603
+Running pthreads N=2048 P=8 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read       time : 0.015990 s
+  Thread create time : 0.000733 s
+  Work          time : 2.331842 s
+  IO Write      time : 0.000039 s
+  Overall       time : 2.348629 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,8,2.348629,2.331842,0.015990,0.000039,0.000733
+Running pthreads N=2048 P=8 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read       time : 0.017076 s
+  Thread create time : 0.000619 s
+  Work          time : 2.176427 s
+  IO Write      time : 0.000037 s
+  Overall       time : 2.194196 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,8,2.194196,2.176427,0.017076,0.000037,0.000619
+Running pthreads N=2048 P=16 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read       time : 0.017266 s
+  Thread create time : 0.001840 s
+  Work          time : 1.680639 s
+  IO Write      time : 0.000035 s
+  Overall       time : 1.699808 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,16,1.699808,1.680639,0.017266,0.000035,0.001840
+Running pthreads N=2048 P=16 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read       time : 0.020451 s
+  Thread create time : 0.001475 s
+  Work          time : 1.675536 s
+  IO Write      time : 0.000052 s
+  Overall       time : 1.697551 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,16,1.697551,1.675536,0.020451,0.000052,0.001475
+Running pthreads N=2048 P=16 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read       time : 0.024521 s
+  Thread create time : 0.001396 s
+  Work          time : 1.793931 s
+  IO Write      time : 0.000041 s
+  Overall       time : 1.819924 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,16,1.819924,1.793931,0.024521,0.000041,0.001396
+Running pthreads N=2048 P=32 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read       time : 0.025892 s
+  Thread create time : 0.006532 s
+  Work          time : 1.523908 s
+  IO Write      time : 0.000028 s
+  Overall       time : 1.556393 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,32,1.556393,1.523908,0.025892,0.000028,0.006532
+Running pthreads N=2048 P=32 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read       time : 0.025436 s
+  Thread create time : 0.007496 s
+  Work          time : 1.834658 s
+  IO Write      time : 0.000028 s
+  Overall       time : 1.867654 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,32,1.867654,1.834658,0.025436,0.000028,0.007496
+Running pthreads N=2048 P=32 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read       time : 0.025063 s
+  Thread create time : 0.006192 s
+  Work          time : 1.718837 s
+  IO Write      time : 0.000043 s
+  Overall       time : 1.750168 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,32,1.750168,1.718837,0.025063,0.000043,0.006192
+Running pthreads N=2048 P=64 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read       time : 0.024591 s
+  Thread create time : 0.050774 s
+  Work          time : 1.140535 s
+  IO Write      time : 0.000061 s
+  Overall       time : 1.215998 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,64,1.215998,1.140535,0.024591,0.000061,0.050774
+Running pthreads N=2048 P=64 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read       time : 0.025332 s
+  Thread create time : 0.039691 s
+  Work          time : 1.351502 s
+  IO Write      time : 0.000037 s
+  Overall       time : 1.416597 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,64,1.416597,1.351502,0.025332,0.000037,0.039691
+Running pthreads N=2048 P=64 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read       time : 0.015706 s
+  Thread create time : 0.020502 s
+  Work          time : 1.243466 s
+  IO Write      time : 0.000047 s
+  Overall       time : 1.279754 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,64,1.279754,1.243466,0.015706,0.000047,0.020502
+Running pthreads N=2048 P=128 run=1
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read       time : 0.021225 s
+  Thread create time : 0.221317 s
+  Work          time : 1.075841 s
+  IO Write      time : 0.000053 s
+  Overall       time : 1.318474 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,128,1.318474,1.075841,0.021225,0.000053,0.221317
+Running pthreads N=2048 P=128 run=2
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read       time : 0.025425 s
+  Thread create time : 0.118947 s
+  Work          time : 0.897327 s
+  IO Write      time : 0.000059 s
+  Overall       time : 1.041795 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,128,1.041795,0.897327,0.025425,0.000059,0.118947
+Running pthreads N=2048 P=128 run=3
+Pthreads Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read       time : 0.015710 s
+  Thread create time : 0.260716 s
+  Work          time : 1.039000 s
+  IO Write      time : 0.000049 s
+  Overall       time : 1.315505 s
+--------------------------------------
+CSV,pthreads,2048,2048,2048,128,1.315505,1.039000,0.015710,0.000049,0.260716
+Running openmp N=2048 P=1 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read  time : 0.016988 s
+  Work     time : 4.395039 s
+  IO Write time : 0.000085 s
+  Overall  time : 4.412142 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,1,4.412142,4.395039,0.016988,0.000085
+Running openmp N=2048 P=1 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read  time : 0.016882 s
+  Work     time : 4.631758 s
+  IO Write time : 0.000085 s
+  Overall  time : 4.648755 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,1,4.648755,4.631758,0.016882,0.000085
+Running openmp N=2048 P=1 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=1
+--------------------------------------
+  IO Read  time : 0.016924 s
+  Work     time : 4.379652 s
+  IO Write time : 0.000087 s
+  Overall  time : 4.396691 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,1,4.396691,4.379652,0.016924,0.000087
+Running openmp N=2048 P=2 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read  time : 0.016731 s
+  Work     time : 2.258901 s
+  IO Write time : 0.000119 s
+  Overall  time : 2.275781 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,2,2.275781,2.258901,0.016731,0.000119
+Running openmp N=2048 P=2 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read  time : 0.016991 s
+  Work     time : 2.219677 s
+  IO Write time : 0.000117 s
+  Overall  time : 2.236814 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,2,2.236814,2.219677,0.016991,0.000117
+Running openmp N=2048 P=2 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=2
+--------------------------------------
+  IO Read  time : 0.016805 s
+  Work     time : 2.244347 s
+  IO Write time : 0.000129 s
+  Overall  time : 2.261307 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,2,2.261307,2.244347,0.016805,0.000129
+Running openmp N=2048 P=4 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read  time : 0.016947 s
+  Work     time : 1.855023 s
+  IO Write time : 0.000120 s
+  Overall  time : 1.872118 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,4,1.872118,1.855023,0.016947,0.000120
+Running openmp N=2048 P=4 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read  time : 0.016978 s
+  Work     time : 1.870899 s
+  IO Write time : 0.000122 s
+  Overall  time : 1.888025 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,4,1.888025,1.870899,0.016978,0.000122
+Running openmp N=2048 P=4 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=4
+--------------------------------------
+  IO Read  time : 0.017042 s
+  Work     time : 1.855687 s
+  IO Write time : 0.000127 s
+  Overall  time : 1.872881 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,4,1.872881,1.855687,0.017042,0.000127
+Running openmp N=2048 P=8 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read  time : 0.017078 s
+  Work     time : 1.031451 s
+  IO Write time : 0.000141 s
+  Overall  time : 1.048698 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,8,1.048698,1.031451,0.017078,0.000141
+Running openmp N=2048 P=8 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read  time : 0.018559 s
+  Work     time : 1.028646 s
+  IO Write time : 0.000138 s
+  Overall  time : 1.047371 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,8,1.047371,1.028646,0.018559,0.000138
+Running openmp N=2048 P=8 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=8
+--------------------------------------
+  IO Read  time : 0.018393 s
+  Work     time : 1.030873 s
+  IO Write time : 0.000163 s
+  Overall  time : 1.049459 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,8,1.049459,1.030873,0.018393,0.000163
+Running openmp N=2048 P=16 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read  time : 0.018351 s
+  Work     time : 0.578057 s
+  IO Write time : 0.000093 s
+  Overall  time : 0.596532 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,16,0.596532,0.578057,0.018351,0.000093
+Running openmp N=2048 P=16 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read  time : 0.018713 s
+  Work     time : 0.577331 s
+  IO Write time : 0.000094 s
+  Overall  time : 0.596166 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,16,0.596166,0.577331,0.018713,0.000094
+Running openmp N=2048 P=16 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=16
+--------------------------------------
+  IO Read  time : 0.018623 s
+  Work     time : 0.577106 s
+  IO Write time : 0.000091 s
+  Overall  time : 0.595850 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,16,0.595850,0.577106,0.018623,0.000091
+Running openmp N=2048 P=32 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read  time : 0.018703 s
+  Work     time : 0.466462 s
+  IO Write time : 0.000084 s
+  Overall  time : 0.485277 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,32,0.485277,0.466462,0.018703,0.000084
+Running openmp N=2048 P=32 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read  time : 0.019036 s
+  Work     time : 0.447769 s
+  IO Write time : 0.000082 s
+  Overall  time : 0.466913 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,32,0.466913,0.447769,0.019036,0.000082
+Running openmp N=2048 P=32 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=32
+--------------------------------------
+  IO Read  time : 0.019754 s
+  Work     time : 0.454838 s
+  IO Write time : 0.000086 s
+  Overall  time : 0.474706 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,32,0.474706,0.454838,0.019754,0.000086
+Running openmp N=2048 P=64 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read  time : 0.019792 s
+  Work     time : 0.454261 s
+  IO Write time : 0.000105 s
+  Overall  time : 0.474183 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,64,0.474183,0.454261,0.019792,0.000105
+Running openmp N=2048 P=64 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read  time : 0.020896 s
+  Work     time : 0.462586 s
+  IO Write time : 0.000103 s
+  Overall  time : 0.483613 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,64,0.483613,0.462586,0.020896,0.000103
+Running openmp N=2048 P=64 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=64
+--------------------------------------
+  IO Read  time : 0.021245 s
+  Work     time : 0.450964 s
+  IO Write time : 0.000100 s
+  Overall  time : 0.472339 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,64,0.472339,0.450964,0.021245,0.000100
+Running openmp N=2048 P=128 run=1
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read  time : 0.021184 s
+  Work     time : 0.717698 s
+  IO Write time : 0.000085 s
+  Overall  time : 0.738996 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,128,0.738996,0.717698,0.021184,0.000085
+Running openmp N=2048 P=128 run=2
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read  time : 0.024537 s
+  Work     time : 0.703321 s
+  IO Write time : 0.000080 s
+  Overall  time : 0.727967 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,128,0.727967,0.703321,0.024537,0.000080
+Running openmp N=2048 P=128 run=3
+OpenMP Matrix-Matrix: (2048 x 2048) x (2048 x 2048) -> (2048 x 2048) P=128
+--------------------------------------
+  IO Read  time : 0.026094 s
+  Work     time : 0.680406 s
+  IO Write time : 0.000106 s
+  Overall  time : 0.706635 s
+--------------------------------------
+CSV,openmp,2048,2048,2048,128,0.706635,0.680406,0.026094,0.000106
+=== Generating 4096x4096 matrices ===
+Generated ./data/mat_4096.bin: 4096 x 4096 matrix.
+Generated ./data/mat_4096_b.bin: 4096 x 4096 matrix.
+Running serial N=4096 run=1
+Serial Matrix-Matrix Multiply: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096)
+--------------------------------------
+  IO Read  time : 0.118922 s
+  Work     time : 21.512285 s
+  IO Write time : 0.000053 s
+  Overall  time : 21.631291 s
+--------------------------------------
+CSV,serial,4096,4096,4096,1,21.631291,21.512285,0.118922,0.000053
+Running serial N=4096 run=2
+Serial Matrix-Matrix Multiply: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096)
+--------------------------------------
+  IO Read  time : 0.072289 s
+  Work     time : 35.526344 s
+  IO Write time : 0.000047 s
+  Overall  time : 35.598715 s
+--------------------------------------
+CSV,serial,4096,4096,4096,1,35.598715,35.526344,0.072289,0.000047
+Running serial N=4096 run=3
+Serial Matrix-Matrix Multiply: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096)
+--------------------------------------
+  IO Read  time : 0.074737 s
+  Work     time : 22.772229 s
+  IO Write time : 0.000074 s
+  Overall  time : 22.847083 s
+--------------------------------------
+CSV,serial,4096,4096,4096,1,22.847083,22.772229,0.074737,0.000074
+Running pthreads N=4096 P=1 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read       time : 0.059952 s
+  Thread create time : 0.000074 s
+  Work          time : 33.921152 s
+  IO Write      time : 0.000042 s
+  Overall       time : 33.981249 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,1,33.981249,33.921152,0.059952,0.000042,0.000074
+Running pthreads N=4096 P=1 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read       time : 0.074769 s
+  Thread create time : 0.000084 s
+  Work          time : 52.134554 s
+  IO Write      time : 0.000061 s
+  Overall       time : 52.209505 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,1,52.209505,52.134554,0.074769,0.000061,0.000084
+Running pthreads N=4096 P=1 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read       time : 0.059835 s
+  Thread create time : 0.000087 s
+  Work          time : 34.041133 s
+  IO Write      time : 0.000045 s
+  Overall       time : 34.101136 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,1,34.101136,34.041133,0.059835,0.000045,0.000087
+Running pthreads N=4096 P=2 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read       time : 0.072355 s
+  Thread create time : 0.000136 s
+  Work          time : 18.185313 s
+  IO Write      time : 0.000049 s
+  Overall       time : 18.257892 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,2,18.257892,18.185313,0.072355,0.000049,0.000136
+Running pthreads N=4096 P=2 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read       time : 0.058557 s
+  Thread create time : 0.000127 s
+  Work          time : 32.818501 s
+  IO Write      time : 0.000055 s
+  Overall       time : 32.877275 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,2,32.877275,32.818501,0.058557,0.000055,0.000127
+Running pthreads N=4096 P=2 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read       time : 0.073233 s
+  Thread create time : 0.000134 s
+  Work          time : 33.601894 s
+  IO Write      time : 0.000047 s
+  Overall       time : 33.675349 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,2,33.675349,33.601894,0.073233,0.000047,0.000134
+Running pthreads N=4096 P=4 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read       time : 0.062458 s
+  Thread create time : 0.000354 s
+  Work          time : 20.545500 s
+  IO Write      time : 0.000062 s
+  Overall       time : 20.608407 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,4,20.608407,20.545500,0.062458,0.000062,0.000354
+Running pthreads N=4096 P=4 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read       time : 0.072707 s
+  Thread create time : 0.000294 s
+  Work          time : 17.518944 s
+  IO Write      time : 0.000048 s
+  Overall       time : 17.592034 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,4,17.592034,17.518944,0.072707,0.000048,0.000294
+Running pthreads N=4096 P=4 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read       time : 0.074127 s
+  Thread create time : 0.000283 s
+  Work          time : 14.871807 s
+  IO Write      time : 0.000049 s
+  Overall       time : 14.946305 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,4,14.946305,14.871807,0.074127,0.000049,0.000283
+Running pthreads N=4096 P=8 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read       time : 0.063269 s
+  Thread create time : 0.000987 s
+  Work          time : 14.729927 s
+  IO Write      time : 0.000040 s
+  Overall       time : 14.794257 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,8,14.794257,14.729927,0.063269,0.000040,0.000987
+Running pthreads N=4096 P=8 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read       time : 0.072888 s
+  Thread create time : 0.000837 s
+  Work          time : 10.290735 s
+  IO Write      time : 0.000050 s
+  Overall       time : 10.364550 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,8,10.364550,10.290735,0.072888,0.000050,0.000837
+Running pthreads N=4096 P=8 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read       time : 0.060731 s
+  Thread create time : 0.001057 s
+  Work          time : 12.422037 s
+  IO Write      time : 0.000048 s
+  Overall       time : 12.483904 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,8,12.483904,12.422037,0.060731,0.000048,0.001057
+Running pthreads N=4096 P=16 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read       time : 0.071814 s
+  Thread create time : 0.001814 s
+  Work          time : 13.879978 s
+  IO Write      time : 0.000091 s
+  Overall       time : 13.953737 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,16,13.953737,13.879978,0.071814,0.000091,0.001814
+Running pthreads N=4096 P=16 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read       time : 0.057431 s
+  Thread create time : 0.003121 s
+  Work          time : 9.928369 s
+  IO Write      time : 0.000048 s
+  Overall       time : 9.988998 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,16,9.988998,9.928369,0.057431,0.000048,0.003121
+Running pthreads N=4096 P=16 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read       time : 0.072716 s
+  Thread create time : 0.001662 s
+  Work          time : 9.251079 s
+  IO Write      time : 0.000053 s
+  Overall       time : 9.325553 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,16,9.325553,9.251079,0.072716,0.000053,0.001662
+Running pthreads N=4096 P=32 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read       time : 0.084346 s
+  Thread create time : 0.007563 s
+  Work          time : 9.473646 s
+  IO Write      time : 0.000031 s
+  Overall       time : 9.565625 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,32,9.565625,9.473646,0.084346,0.000031,0.007563
+Running pthreads N=4096 P=32 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read       time : 0.062112 s
+  Thread create time : 0.005233 s
+  Work          time : 19.103037 s
+  IO Write      time : 0.000028 s
+  Overall       time : 19.170441 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,32,19.170441,19.103037,0.062112,0.000028,0.005233
+Running pthreads N=4096 P=32 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read       time : 0.065587 s
+  Thread create time : 0.005954 s
+  Work          time : 10.875346 s
+  IO Write      time : 0.000046 s
+  Overall       time : 10.946966 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,32,10.946966,10.875346,0.065587,0.000046,0.005954
+Running pthreads N=4096 P=64 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read       time : 0.085875 s
+  Thread create time : 0.030012 s
+  Work          time : 9.100309 s
+  IO Write      time : 0.000071 s
+  Overall       time : 9.216300 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,64,9.216300,9.100309,0.085875,0.000071,0.030012
+Running pthreads N=4096 P=64 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read       time : 0.070709 s
+  Thread create time : 0.029876 s
+  Work          time : 6.295523 s
+  IO Write      time : 0.000045 s
+  Overall       time : 6.396185 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,64,6.396185,6.295523,0.070709,0.000045,0.029876
+Running pthreads N=4096 P=64 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read       time : 0.086587 s
+  Thread create time : 0.034061 s
+  Work          time : 7.198567 s
+  IO Write      time : 0.000064 s
+  Overall       time : 7.319317 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,64,7.319317,7.198567,0.086587,0.000064,0.034061
+Running pthreads N=4096 P=128 run=1
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read       time : 0.058158 s
+  Thread create time : 0.474165 s
+  Work          time : 4.350603 s
+  IO Write      time : 0.000074 s
+  Overall       time : 4.883031 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,128,4.883031,4.350603,0.058158,0.000074,0.474165
+Running pthreads N=4096 P=128 run=2
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read       time : 0.072158 s
+  Thread create time : 0.741765 s
+  Work          time : 4.125988 s
+  IO Write      time : 0.000063 s
+  Overall       time : 4.940006 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,128,4.940006,4.125988,0.072158,0.000063,0.741765
+Running pthreads N=4096 P=128 run=3
+Pthreads Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read       time : 0.089755 s
+  Thread create time : 0.504734 s
+  Work          time : 3.928021 s
+  IO Write      time : 0.000056 s
+  Overall       time : 4.522609 s
+--------------------------------------
+CSV,pthreads,4096,4096,4096,128,4.522609,3.928021,0.089755,0.000056,0.504734
+Running openmp N=4096 P=1 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read  time : 0.066512 s
+  Work     time : 34.784843 s
+  IO Write time : 0.000090 s
+  Overall  time : 34.851476 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,1,34.851476,34.784843,0.066512,0.000090
+Running openmp N=4096 P=1 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read  time : 0.065589 s
+  Work     time : 34.780082 s
+  IO Write time : 0.000086 s
+  Overall  time : 34.845788 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,1,34.845788,34.780082,0.065589,0.000086
+Running openmp N=4096 P=1 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=1
+--------------------------------------
+  IO Read  time : 0.065367 s
+  Work     time : 34.782234 s
+  IO Write time : 0.000089 s
+  Overall  time : 34.847719 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,1,34.847719,34.782234,0.065367,0.000089
+Running openmp N=4096 P=2 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read  time : 0.065249 s
+  Work     time : 17.563282 s
+  IO Write time : 0.000136 s
+  Overall  time : 17.628697 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,2,17.628697,17.563282,0.065249,0.000136
+Running openmp N=4096 P=2 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read  time : 0.064963 s
+  Work     time : 17.558477 s
+  IO Write time : 0.000134 s
+  Overall  time : 17.623605 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,2,17.623605,17.558477,0.064963,0.000134
+Running openmp N=4096 P=2 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=2
+--------------------------------------
+  IO Read  time : 0.065043 s
+  Work     time : 17.563344 s
+  IO Write time : 0.000133 s
+  Overall  time : 17.628549 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,2,17.628549,17.563344,0.065043,0.000133
+Running openmp N=4096 P=4 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read  time : 0.065481 s
+  Work     time : 19.208885 s
+  IO Write time : 0.000138 s
+  Overall  time : 19.274535 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,4,19.274535,19.208885,0.065481,0.000138
+Running openmp N=4096 P=4 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read  time : 0.064877 s
+  Work     time : 19.231408 s
+  IO Write time : 0.000143 s
+  Overall  time : 19.296461 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,4,19.296461,19.231408,0.064877,0.000143
+Running openmp N=4096 P=4 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=4
+--------------------------------------
+  IO Read  time : 0.065287 s
+  Work     time : 19.223039 s
+  IO Write time : 0.000134 s
+  Overall  time : 19.288491 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,4,19.288491,19.223039,0.065287,0.000134
+Running openmp N=4096 P=8 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read  time : 0.064909 s
+  Work     time : 10.144045 s
+  IO Write time : 0.000155 s
+  Overall  time : 10.209142 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,8,10.209142,10.144045,0.064909,0.000155
+Running openmp N=4096 P=8 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read  time : 0.066556 s
+  Work     time : 10.133527 s
+  IO Write time : 0.000157 s
+  Overall  time : 10.200272 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,8,10.200272,10.133527,0.066556,0.000157
+Running openmp N=4096 P=8 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=8
+--------------------------------------
+  IO Read  time : 0.066465 s
+  Work     time : 10.139897 s
+  IO Write time : 0.000102 s
+  Overall  time : 10.206492 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,8,10.206492,10.139897,0.066465,0.000102
+Running openmp N=4096 P=16 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read  time : 0.066661 s
+  Work     time : 5.485440 s
+  IO Write time : 0.000165 s
+  Overall  time : 5.552297 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,16,5.552297,5.485440,0.066661,0.000165
+Running openmp N=4096 P=16 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read  time : 0.067074 s
+  Work     time : 5.436696 s
+  IO Write time : 0.000176 s
+  Overall  time : 5.503979 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,16,5.503979,5.436696,0.067074,0.000176
+Running openmp N=4096 P=16 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=16
+--------------------------------------
+  IO Read  time : 0.066759 s
+  Work     time : 5.488503 s
+  IO Write time : 0.000154 s
+  Overall  time : 5.555448 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,16,5.555448,5.488503,0.066759,0.000154
+Running openmp N=4096 P=32 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read  time : 0.066900 s
+  Work     time : 3.740106 s
+  IO Write time : 0.000183 s
+  Overall  time : 3.807224 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,32,3.807224,3.740106,0.066900,0.000183
+Running openmp N=4096 P=32 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read  time : 0.068764 s
+  Work     time : 4.306247 s
+  IO Write time : 0.000196 s
+  Overall  time : 4.375241 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,32,4.375241,4.306247,0.068764,0.000196
+Running openmp N=4096 P=32 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=32
+--------------------------------------
+  IO Read  time : 0.071443 s
+  Work     time : 3.938249 s
+  IO Write time : 0.000174 s
+  Overall  time : 4.009898 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,32,4.009898,3.938249,0.071443,0.000174
+Running openmp N=4096 P=64 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read  time : 0.072022 s
+  Work     time : 3.668934 s
+  IO Write time : 0.000168 s
+  Overall  time : 3.741154 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,64,3.741154,3.668934,0.072022,0.000168
+Running openmp N=4096 P=64 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read  time : 0.073603 s
+  Work     time : 3.798512 s
+  IO Write time : 0.000311 s
+  Overall  time : 3.872455 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,64,3.872455,3.798512,0.073603,0.000311
+Running openmp N=4096 P=64 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=64
+--------------------------------------
+  IO Read  time : 0.071716 s
+  Work     time : 3.698023 s
+  IO Write time : 0.000337 s
+  Overall  time : 3.770108 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,64,3.770108,3.698023,0.071716,0.000337
+Running openmp N=4096 P=128 run=1
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read  time : 0.074055 s
+  Work     time : 3.544435 s
+  IO Write time : 0.000396 s
+  Overall  time : 3.618916 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,128,3.618916,3.544435,0.074055,0.000396
+Running openmp N=4096 P=128 run=2
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read  time : 0.082429 s
+  Work     time : 3.386269 s
+  IO Write time : 0.000357 s
+  Overall  time : 3.469084 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,128,3.469084,3.386269,0.082429,0.000357
+Running openmp N=4096 P=128 run=3
+OpenMP Matrix-Matrix: (4096 x 4096) x (4096 x 4096) -> (4096 x 4096) P=128
+--------------------------------------
+  IO Read  time : 0.080680 s
+  Work     time : 3.817565 s
+  IO Write time : 0.000436 s
+  Overall  time : 3.898711 s
+--------------------------------------
+CSV,openmp,4096,4096,4096,128,3.898711,3.817565,0.080680,0.000436
+=== All experiments done. Results in ./data/results_47461859.csv ===
